@@ -338,7 +338,7 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <div class="place"><div class="pname">Zhangjiajie</div><div class="pregion">China</div><div class="pnote">In two weeks.</div></div>
     </div>
 
-    <div class="cat-head visited r"><span class="dot"></span><h3>Visited</h3><span class="count">56</span><span class="tag">Stayed a while, or passed straight through.</span></div>
+    <div class="cat-head visited r"><span class="dot"></span><h3>Visited</h3><span class="count">55</span><span class="tag">Stayed a while, or passed straight through.</span></div>
     <div class="place-list r">
       <div class="place"><div class="pname">Agadir</div><div class="pregion">Morocco</div></div>
       <div class="place"><div class="pname">Amman</div><div class="pregion">Jordan</div></div>
@@ -364,9 +364,8 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <div class="place"><div class="pname">Havana</div><div class="pregion">Cuba</div></div>
       <div class="place"><div class="pname">Ho Chi Minh City</div><div class="pregion">Vietnam</div></div>
       <div class="place"><div class="pname">Jerusalem</div><div class="pregion">Israel / Palestine</div></div>
-      <div class="place"><div class="pname">Jordan</div></div>
       <div class="place"><div class="pname">Kauai</div><div class="pregion">United States</div></div>
-      <div class="place"><div class="pname">Kenya</div></div>
+      <div class="place"><div class="pname">Nairobi</div><div class="pregion">Kenya</div></div>
       <div class="place"><div class="pname">Las Vegas</div><div class="pregion">United States</div></div>
       <div class="place"><div class="pname">Ljubljana</div><div class="pregion">Slovenia</div></div>
       <div class="place"><div class="pname">Los Angeles</div><div class="pregion">United States</div></div>
@@ -383,7 +382,7 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <div class="place"><div class="pname">Rio de Janeiro</div><div class="pregion">Brazil</div></div>
       <div class="place"><div class="pname">San Andrés</div><div class="pregion">Colombia</div></div>
       <div class="place"><div class="pname">San Francisco</div><div class="pregion">United States</div></div>
-      <div class="place"><div class="pname">Saudi Arabia</div></div>
+      <div class="place"><div class="pname">Mecca · Jeddah · Medina</div><div class="pregion">Saudi Arabia</div></div>
       <div class="place"><div class="pname">Seoul</div><div class="pregion">South Korea</div></div>
       <div class="place"><div class="pname">Shenzhen</div><div class="pregion">China</div></div>
       <div class="place"><div class="pname">Siem Reap</div><div class="pregion">Cambodia</div></div>
@@ -394,8 +393,8 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <div class="place"><div class="pname">Tirana</div><div class="pregion">Albania</div></div>
       <div class="place"><div class="pname">Vilimalé</div><div class="pregion">Maldives</div></div>
       <div class="place"><div class="pname">Zagreb</div><div class="pregion">Croatia</div></div>
-      <div class="place"><div class="pname">Zambia</div></div>
-      <div class="place"><div class="pname">Zimbabwe</div></div>
+      <div class="place"><div class="pname">Livingstone</div><div class="pregion">Zambia</div></div>
+      <div class="place"><div class="pname">Victoria Falls</div><div class="pregion">Zimbabwe</div></div>
     </div>
   </div>
 </section>
@@ -405,7 +404,7 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
   <div class="wrap">
     <div class="series-head r">
       <h2 class="series-title">The World So Far</h2>
-      <span class="series-meta">66 Places · Mapped</span>
+      <span class="series-meta">65 Places · Mapped</span>
     </div>
     <p class="series-desc r">The whole list, laid onto one dark map — everywhere lived, everywhere passed through, and the two dots still waiting.</p>
     <div class="r">
@@ -557,9 +556,8 @@ const PLACES=[
 {n:'Havana',r:'Cuba',c:'visited',lat:23.11,lon:-82.37},
 {n:'Ho Chi Minh City',r:'Vietnam',c:'visited',lat:10.82,lon:106.63},
 {n:'Jerusalem',r:'Israel / Palestine',c:'visited',lat:31.78,lon:35.22},
-{n:'Jordan',r:'',c:'visited',lat:30.33,lon:35.44},
 {n:'Kauai',r:'United States',c:'visited',lat:22.10,lon:-159.50},
-{n:'Kenya',r:'',c:'visited',lat:-0.50,lon:37.50},
+{n:'Nairobi',r:'Kenya',c:'visited',lat:-1.29,lon:36.82},
 {n:'Las Vegas',r:'United States',c:'visited',lat:36.17,lon:-115.14},
 {n:'Ljubljana',r:'Slovenia',c:'visited',lat:46.06,lon:14.51},
 {n:'Los Angeles',r:'United States',c:'visited',lat:34.05,lon:-118.24},
@@ -576,7 +574,9 @@ const PLACES=[
 {n:'Rio de Janeiro',r:'Brazil',c:'visited',lat:-22.91,lon:-43.17},
 {n:'San Andrés',r:'Colombia',c:'visited',lat:12.58,lon:-81.70},
 {n:'San Francisco',r:'United States',c:'visited',lat:37.77,lon:-122.42},
-{n:'Saudi Arabia',r:'',c:'visited',lat:24.00,lon:45.00},
+{n:'Mecca',r:'Saudi Arabia',c:'visited',lat:21.42,lon:39.83},
+{n:'Jeddah',r:'Saudi Arabia',c:'visited',lat:21.49,lon:39.19},
+{n:'Medina',r:'Saudi Arabia',c:'visited',lat:24.47,lon:39.61},
 {n:'Seoul',r:'South Korea',c:'visited',lat:37.57,lon:126.98},
 {n:'Shenzhen',r:'China',c:'visited',lat:22.54,lon:114.06},
 {n:'Siem Reap',r:'Cambodia',c:'visited',lat:13.36,lon:103.86},
@@ -587,8 +587,8 @@ const PLACES=[
 {n:'Tirana',r:'Albania',c:'visited',lat:41.33,lon:19.82},
 {n:'Vilimalé',r:'Maldives',c:'visited',lat:4.19,lon:73.51},
 {n:'Zagreb',r:'Croatia',c:'visited',lat:45.81,lon:15.98},
-{n:'Zambia',r:'',c:'visited',lat:-13.13,lon:27.85},
-{n:'Zimbabwe',r:'',c:'visited',lat:-19.00,lon:29.15}
+{n:'Livingstone',r:'Zambia',c:'visited',lat:-17.85,lon:25.86},
+{n:'Victoria Falls',r:'Zimbabwe',c:'visited',lat:-17.92,lon:25.83}
 ];
 let mapInit=false;
 const mapIo=new IntersectionObserver(es=>{es.forEach(e=>{
