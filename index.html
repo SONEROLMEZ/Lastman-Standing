@@ -770,7 +770,7 @@ function heroTick(){
   let d=DEPART-Date.now(); if(d<0)d=0;
   const days=Math.floor(d/86400000);
   const el=document.getElementById('heroCountdown');
-  if(el) el.textContent = d>0 ? ('China in '+days+' days') : 'Currently on the road';
+  if(el) el.textContent = d>0 ? ('Antalya in '+days+' days') : 'Currently on the road';
 }
 heroTick();setInterval(heroTick,3600000);
 </script>
