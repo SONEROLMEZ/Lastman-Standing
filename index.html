@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SONER ÖLMEZ — LASTMAN STANDING</title>
+<meta name="description" content="Lastman Standing · Ayakta Kalan Son Adam — a photographic archive of totems, horizons and places. The journeys of Soner Ölmez.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23c8b89a' font-family='Georgia'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Archivo:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --bg:#0b0b0c;
+  --bg2:#111113;
+  --ink:#e8e4dc;
+  --muted:#9a958b;
+  --faint:#6b675f;
+  --gold:#c8b89a;
+  --line:#222226;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Archivo',Helvetica,Arial,sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:#0b0b0c}
+a{color:inherit;text-decoration:none}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 2rem;
+  background:linear-gradient(to bottom,rgba(11,11,12,.92),rgba(11,11,12,0));
+  backdrop-filter:blur(6px);
+}
+.topbar .brand{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  letter-spacing:.35em;font-size:.62rem;color:var(--ink);
+}
+.topbar nav{display:flex;gap:1.6rem;flex-wrap:wrap}
+.topbar nav a{
+  font-size:.6rem;letter-spacing:.28em;color:var(--muted);
+  text-transform:uppercase;transition:color .3s;
+}
+.topbar nav a:hover{color:var(--gold)}
+@media(max-width:640px){.topbar{padding:.9rem 1rem}.topbar nav{gap:.7rem}.topbar nav a{font-size:.5rem;letter-spacing:.16rem}.topbar .brand{font-size:.5rem;letter-spacing:.2em}}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:6rem 2rem 4rem;position:relative;
+}
+.hero .name{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:300;font-size:clamp(3.4rem,11vw,8.5rem);
+  line-height:1;letter-spacing:.06em;text-transform:uppercase;
+}
+.hero .sub{
+  margin-top:1.6rem;font-size:.66rem;letter-spacing:.42em;
+  color:var(--muted);text-transform:uppercase;
+}
+.hero .rule{width:1px;height:5rem;background:var(--line);margin:2.5rem auto 0}
+.hero .scroll{
+  position:absolute;bottom:2rem;font-size:.55rem;letter-spacing:.4em;
+  color:var(--faint);text-transform:uppercase;
+}
+
+/* ---------- sections ---------- */
+section{padding:7rem 2rem}
+@media(max-width:640px){section{padding:4.5rem 1.2rem}}
+.wrap{max-width:1180px;margin:0 auto}
+.series-head{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:1px solid var(--line);padding-bottom:1.4rem;margin-bottom:3.5rem;gap:1rem;flex-wrap:wrap}
+.series-title{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;
+  font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:.14em;text-transform:uppercase;
+}
+.series-meta{font-size:.6rem;letter-spacing:.3em;color:var(--faint);text-transform:uppercase}
+.series-desc{max-width:34ch;color:var(--muted);
+  margin-bottom:3.5rem;font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;letter-spacing:.03em}
+
+/* ---------- gallery ---------- */
+.totem-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+@media(max-width:760px){.totem-grid{grid-template-columns:1fr;gap:3rem}}
+.horizon-list{display:flex;flex-direction:column;gap:4.5rem}
+.frame{display:flex;flex-direction:column;gap:1rem}
+.frame .imgwrap{overflow:hidden;background:#000;cursor:zoom-in}
+.frame img{width:100%;display:block;transition:transform 1.2s ease,opacity .6s;opacity:0}
+.frame img.loaded{opacity:1}
+.frame:hover img{transform:scale(1.025)}
+.totem .imgwrap{aspect-ratio:9/16}
+.horizon .imgwrap{aspect-ratio:16/9}
+.frame .row{display:flex;justify-content:space-between;align-items:baseline;
+  gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.9rem}
+.frame .loc{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+.frame .year{font-size:.6rem;letter-spacing:.25em;color:var(--faint)}
+.frame .note{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:1rem;color:var(--muted)}
+.frame .coords{font-size:.55rem;letter-spacing:.22em;color:var(--faint);margin-top:.2rem}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;display:none;
+  background:rgba(8,8,9,.97);
+  flex-direction:column;justify-content:center;align-items:center;
+  padding:2rem;cursor:zoom-out;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:74vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.8)}
+.lightbox .lb-meta{margin-top:1.6rem;text-align:center;max-width:60ch}
+.lightbox .lb-loc{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase}
+.lightbox .lb-note{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--muted);margin-top:.4rem}
+.lightbox .lb-coords{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top:.4rem}
+.lightbox .lb-close{position:absolute;top:1.4rem;right:1.8rem;font-size:.6rem;
+  letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+.lightbox .lb-close:hover{color:var(--gold)}
+
+/* ---------- map ---------- */
+#mapid{height:560px;background:#111113;border:1px solid var(--line)}
+@media(max-width:640px){#mapid{height:420px}}
+.leaflet-container{font-family:'Archivo',Helvetica,Arial,sans-serif;background:#111113;outline:none}
+.leaflet-tile-pane{filter:saturate(.65) brightness(.85) contrast(1.05)}
+.map-legend{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+.map-legend span{font-size:.55rem;letter-spacing:.28em;color:var(--faint);text-transform:uppercase;
+  display:flex;align-items:center;gap:.55rem}
+.legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.legend-dot.lived{background:var(--gold)}
+.legend-dot.upcoming{background:transparent;border:1px solid var(--gold)}
+.legend-dot.visited{background:var(--faint)}
+.map-popup .pp-name{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase}
+.map-popup .pp-region{font-size:.55rem;letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-top:.15rem}
+.map-popup .pp-cat{font-size:.55rem;letter-spacing:.2em;color:var(--gold);margin-top:.3rem;text-transform:uppercase}
+.map-attrib{font-size:.5rem;letter-spacing:.15em;color:var(--faint);margin-top:.8rem}
+
+/* ---------- places ---------- */
+.places-intro{max-width:52ch;color:var(--muted);
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;line-height:1.7;margin-bottom:4rem}
+.cat-head{display:flex;align-items:baseline;gap:1.2rem;margin:3.5rem 0 1.6rem;flex-wrap:wrap}
+.cat-head .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.cat-head.next .dot{background:transparent;border:1px solid var(--gold)}
+.cat-head.visited .dot{background:var(--faint)}
+.cat-head h3{font-size:.66rem;letter-spacing:.35em;text-transform:uppercase;font-weight:400}
+.cat-head .count{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;color:var(--gold)}
+.cat-head .tag{font-size:.85rem;letter-spacing:.05em;color:var(--faint);font-style:italic;font-family:'Cormorant Garamond',Georgia,serif}
+.place-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 3rem}
+.place{border-top:1px solid var(--line);padding:.85rem 0}
+.place .pname{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.place .pregion{font-size:.55rem;letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-top:.15rem}
+.place .pnote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--muted);font-size:.95rem;margin-top:.3rem}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:2.5rem}}
+.about-name{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;
+  font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;letter-spacing:.1em;text-transform:uppercase;
+}
+.about-tag{font-size:.6rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-top:1rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.5rem}
+.stat .k{font-size:.55rem;letter-spacing:.3em;color:var(--faint);text-transform:uppercase}
+.stat .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;color:var(--ink);margin-top:.2rem}
+.about-text p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.28rem;
+  line-height:1.75;color:var(--muted);margin-bottom:1.6rem;font-weight:400}
+.about-text p strong{color:var(--ink);font-weight:500}
+.about-text .sign{margin-top:2.4rem;font-style:italic;color:var(--ink)}
+
+/* ---------- contact ---------- */
+.contact{text-align:center}
+.contact .mail{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;
+  border-bottom:1px solid var(--line);padding-bottom:.6rem;
+  transition:color .3s;
+}
+.contact .mail:hover{color:var(--gold)}
+.contact .site{font-size:.62rem;letter-spacing:.35em;color:var(--faint);text-transform:uppercase;margin-top:1.6rem}
+.contact .loc{font-size:.58rem;letter-spacing:.3em;color:var(--faint);text-transform:uppercase;margin-top:.6rem}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:3rem 2rem;text-align:center}
+footer .fbrand{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:.28em;
+  font-size:.7rem;text-transform:uppercase}
+footer .fsub{font-size:.55rem;letter-spacing:.3em;color:var(--faint);text-transform:uppercase;margin-top:.5rem}
+footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top:2rem;text-transform:uppercase}
+
+/* reveal on scroll */
+.r{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.r.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">SONER&nbsp;ÖLMEZ&nbsp;·&nbsp;LASTMAN&nbsp;STANDING</div>
+  <nav>
+    <a href="#totems">Totems</a>
+    <a href="#horizons">Horizons</a>
+    <a href="#places">Places</a>
+    <a href="#map">Map</a>
+    <a href="trip.html">Trip</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <h1 class="name">Soner<br>Ölmez</h1>
+  <p class="sub">Lastman Standing · Ayakta Kalan Son Adam</p>
+  <p class="sub" id="heroCountdown" style="margin-top:.9rem;color:var(--gold);letter-spacing:.3em"></p>
+  <div class="rule"></div>
+  <p class="scroll">Scroll</p>
+</section>
+
+<!-- TOTEMS -->
+<section id="totems">
+  <div class="wrap">
+    <div class="series-head r">
+      <h2 class="series-title">The Totem Series</h2>
+      <span class="series-meta">Vertical · 3:9</span>
+    </div>
+    <p class="series-desc r">Height, scale and solitude — the frames shot tall. Tap any frame to view it alone.</p>
+    <div class="totem-grid">
+      <figure class="frame totem r" data-title="Under the Pillar" data-loc="Zhangjiajie, China · 2024" data-note="Stood at the bottom and looked straight up." data-coords="29.1170 N, 110.4790 E">
+        <div class="imgwrap"><img data-src="images/totem-zhangjiajie.png" alt="Zhangjiajie — Under the Pillar"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Zhangjiajie</span><span class="year">China · 2024</span></div>
+          <p class="note">Stood at the bottom and looked straight up.</p>
+          <p class="coords">29.1170 N, 110.4790 E</p>
+        </figcaption>
+      </figure>
+      <figure class="frame totem r" data-title="Falls in the Green" data-loc="Kauai, United States · 2023" data-note="Soaked through and happy about it." data-coords="22.0964 N, 159.5261 W">
+        <div class="imgwrap"><img data-src="images/totem-kauai.png" alt="Kauai — Falls in the Green"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Kauai</span><span class="year">United States · 2023</span></div>
+          <p class="note">Soaked through and happy about it.</p>
+          <p class="coords">22.0964 N, 159.5261 W</p>
+        </figcaption>
+      </figure>
+      <figure class="frame totem r" data-title="Steps into the Mist" data-loc="Tegallalang, Bali · 2022" data-note="Green all the way up into the cloud." data-coords="8.4312 S, 115.2790 E">
+        <div class="imgwrap"><img data-src="images/totem-tegallalang.png" alt="Tegallalang, Bali — Steps into the Mist"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Tegallalang, Bali</span><span class="year">Indonesia · 2022</span></div>
+          <p class="note">Green all the way up into the cloud.</p>
+          <p class="coords">8.4312 S, 115.2790 E</p>
+        </figcaption>
+      </figure>
+      <figure class="frame totem r" data-title="Blue-Green Steps" data-loc="Plitvice Lakes, Croatia · 2021" data-note="Water falling over moss, over and over." data-coords="44.8654 N, 15.5820 E">
+        <div class="imgwrap"><img data-src="images/totem-plitvice.png" alt="Plitvice Lakes — Blue-Green Steps"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Plitvice Lakes</span><span class="year">Croatia · 2021</span></div>
+          <p class="note">Water falling over moss, over and over.</p>
+          <p class="coords">44.8654 N, 15.5820 E</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- HORIZONS -->
+<section id="horizons">
+  <div class="wrap">
+    <div class="series-head r">
+      <h2 class="series-title">The Horizon Series</h2>
+      <span class="series-meta">Panorama · 8:4</span>
+    </div>
+    <p class="series-desc r">Endless ground, level horizon, the world opened flat.</p>
+    <div class="horizon-list">
+      <figure class="frame horizon r" data-title="Green Water" data-loc="Li River, China · 2024" data-note="Karst towers, still water, nobody else on the river." data-coords="24.9000 N, 110.4000 E">
+        <div class="imgwrap"><img data-src="images/horizon-liriver.png" alt="Li River — Green Water"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Li River</span><span class="year">China · 2024</span></div>
+          <p class="note">Karst towers, still water, nobody else on the river.</p>
+          <p class="coords">24.9000 N, 110.4000 E</p>
+        </figcaption>
+      </figure>
+      <figure class="frame horizon r" data-title="Emerald Coast" data-loc="Na Pali Coast, Kauai · 2023" data-note="Green cliffs straight into blue water." data-coords="22.1800 N, 159.6600 W">
+        <div class="imgwrap"><img data-src="images/horizon-napali.png" alt="Na Pali Coast, Kauai — Emerald Coast"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Na Pali Coast, Kauai</span><span class="year">United States · 2023</span></div>
+          <p class="note">Green cliffs straight into blue water.</p>
+          <p class="coords">22.1800 N, 159.6600 W</p>
+        </figcaption>
+      </figure>
+      <figure class="frame horizon r" data-title="The Pillar Forest" data-loc="Zhangjiajie, China · 2024" data-note="Thousands of towers under one blanket of mist." data-coords="29.1170 N, 110.4790 E">
+        <div class="imgwrap"><img data-src="images/horizon-zhangjiajie.png" alt="Zhangjiajie — The Pillar Forest"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Zhangjiajie</span><span class="year">China · 2024</span></div>
+          <p class="note">Thousands of towers under one blanket of mist.</p>
+          <p class="coords">29.1170 N, 110.4790 E</p>
+        </figcaption>
+      </figure>
+      <figure class="frame horizon r" data-title="Teal Morning" data-loc="Ha Long Bay, Vietnam · 2022" data-note="Limestone islands in flat green water at dawn." data-coords="20.9100 N, 107.1830 E">
+        <div class="imgwrap"><img data-src="images/horizon-halongbay.png" alt="Ha Long Bay — Teal Morning"></div>
+        <figcaption>
+          <div class="row"><span class="loc">Ha Long Bay</span><span class="year">Vietnam · 2022</span></div>
+          <p class="note">Limestone islands in flat green water at dawn.</p>
+          <p class="coords">20.9100 N, 107.1830 E</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PLACES -->
+<section id="places">
+  <div class="wrap">
+    <div class="series-head r">
+      <h2 class="series-title">The Index</h2>
+      <span class="series-meta">Places</span>
+    </div>
+    <p class="places-intro r">Everywhere, in one list — from the towns I grew up in to the ones I'm flying to next. Some I stayed years, some a single night, and some left no photograph at all.</p>
+
+    <div class="cat-head r"><span class="dot"></span><h3>Lived</h3><span class="count">11</span><span class="tag">Where I've put down roots.</span></div>
+    <div class="place-list r">
+      <div class="place"><div class="pname">Antalya</div><div class="pregion">Türkiye</div><div class="pnote">Where it started — the family line settled here.</div></div>
+      <div class="place"><div class="pname">Bodrum</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">Bucak</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">Foça</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">Kestel</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">London</div><div class="pregion">United Kingdom</div><div class="pnote">Central London — the last ten years.</div></div>
+      <div class="place"><div class="pname">North East England</div><div class="pregion">United Kingdom</div><div class="pnote">Five years.</div></div>
+      <div class="place"><div class="pname">Payas</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">Çanakkale</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">İzmir</div><div class="pregion">Türkiye</div></div>
+      <div class="place"><div class="pname">İzmir Adnan Menderes Airport</div><div class="pregion">Türkiye</div><div class="pnote">Posted here as a policeman.</div></div>
+    </div>
+
+    <div class="cat-head next r"><span class="dot"></span><h3>Going Next</h3><span class="count">2</span><span class="tag">Booked, and counting the days.</span></div>
+    <div class="place-list r">
+      <div class="place"><div class="pname">Li River</div><div class="pregion">China</div><div class="pnote">In two weeks.</div></div>
+      <div class="place"><div class="pname">Zhangjiajie</div><div class="pregion">China</div><div class="pnote">In two weeks.</div></div>
+    </div>
+
+    <div class="cat-head visited r"><span class="dot"></span><h3>Visited</h3><span class="count">56</span><span class="tag">Stayed a while, or passed straight through.</span></div>
+    <div class="place-list r">
+      <div class="place"><div class="pname">Agadir</div><div class="pregion">Morocco</div></div>
+      <div class="place"><div class="pname">Amman</div><div class="pregion">Jordan</div></div>
+      <div class="place"><div class="pname">Amsterdam</div><div class="pregion">Netherlands</div></div>
+      <div class="place"><div class="pname">Athens</div><div class="pregion">Greece</div></div>
+      <div class="place"><div class="pname">Baku</div><div class="pregion">Azerbaijan</div></div>
+      <div class="place"><div class="pname">Bali</div><div class="pregion">Indonesia</div></div>
+      <div class="place"><div class="pname">Bangkok</div><div class="pregion">Thailand</div></div>
+      <div class="place"><div class="pname">Beijing</div><div class="pregion">China</div></div>
+      <div class="place"><div class="pname">Bogotá</div><div class="pregion">Colombia</div></div>
+      <div class="place"><div class="pname">Botswana</div></div>
+      <div class="place"><div class="pname">Budapest</div><div class="pregion">Hungary</div></div>
+      <div class="place"><div class="pname">Buenos Aires</div><div class="pregion">Argentina</div></div>
+      <div class="place"><div class="pname">Cairo</div><div class="pregion">Egypt</div></div>
+      <div class="place"><div class="pname">Cape Town</div><div class="pregion">South Africa</div></div>
+      <div class="place"><div class="pname">Casablanca</div><div class="pregion">Morocco</div></div>
+      <div class="place"><div class="pname">Christiania</div><div class="pregion">Denmark</div></div>
+      <div class="place"><div class="pname">Copenhagen</div><div class="pregion">Denmark</div></div>
+      <div class="place"><div class="pname">Córdoba</div><div class="pregion">Argentina</div></div>
+      <div class="place"><div class="pname">Edinburgh</div><div class="pregion">United Kingdom</div></div>
+      <div class="place"><div class="pname">Gibraltar</div></div>
+      <div class="place"><div class="pname">Ha Long Bay</div><div class="pregion">Vietnam</div></div>
+      <div class="place"><div class="pname">Havana</div><div class="pregion">Cuba</div></div>
+      <div class="place"><div class="pname">Ho Chi Minh City</div><div class="pregion">Vietnam</div></div>
+      <div class="place"><div class="pname">Jerusalem</div><div class="pregion">Israel / Palestine</div></div>
+      <div class="place"><div class="pname">Jordan</div></div>
+      <div class="place"><div class="pname">Kauai</div><div class="pregion">United States</div></div>
+      <div class="place"><div class="pname">Kenya</div></div>
+      <div class="place"><div class="pname">Las Vegas</div><div class="pregion">United States</div></div>
+      <div class="place"><div class="pname">Ljubljana</div><div class="pregion">Slovenia</div></div>
+      <div class="place"><div class="pname">Los Angeles</div><div class="pregion">United States</div></div>
+      <div class="place"><div class="pname">Luxor</div><div class="pregion">Egypt</div></div>
+      <div class="place"><div class="pname">Makati</div><div class="pregion">Philippines</div></div>
+      <div class="place"><div class="pname">Marrakesh</div><div class="pregion">Morocco</div></div>
+      <div class="place"><div class="pname">Medellín</div><div class="pregion">Colombia</div></div>
+      <div class="place"><div class="pname">Mendoza</div><div class="pregion">Argentina</div></div>
+      <div class="place"><div class="pname">Miami</div><div class="pregion">United States</div></div>
+      <div class="place"><div class="pname">Osaka</div><div class="pregion">Japan</div></div>
+      <div class="place"><div class="pname">Plitvice Lakes</div><div class="pregion">Croatia</div></div>
+      <div class="place"><div class="pname">Punta del Este</div><div class="pregion">Uruguay</div></div>
+      <div class="place"><div class="pname">Reykjavík</div><div class="pregion">Iceland</div></div>
+      <div class="place"><div class="pname">Rio de Janeiro</div><div class="pregion">Brazil</div></div>
+      <div class="place"><div class="pname">San Andrés</div><div class="pregion">Colombia</div></div>
+      <div class="place"><div class="pname">San Francisco</div><div class="pregion">United States</div></div>
+      <div class="place"><div class="pname">Saudi Arabia</div></div>
+      <div class="place"><div class="pname">Seoul</div><div class="pregion">South Korea</div></div>
+      <div class="place"><div class="pname">Shenzhen</div><div class="pregion">China</div></div>
+      <div class="place"><div class="pname">Siem Reap</div><div class="pregion">Cambodia</div></div>
+      <div class="place"><div class="pname">Singapore</div></div>
+      <div class="place"><div class="pname">Stockholm</div><div class="pregion">Sweden</div></div>
+      <div class="place"><div class="pname">Taiwan</div></div>
+      <div class="place"><div class="pname">Tenerife</div><div class="pregion">Spain</div></div>
+      <div class="place"><div class="pname">Tirana</div><div class="pregion">Albania</div></div>
+      <div class="place"><div class="pname">Vilimalé</div><div class="pregion">Maldives</div></div>
+      <div class="place"><div class="pname">Zagreb</div><div class="pregion">Croatia</div></div>
+      <div class="place"><div class="pname">Zambia</div></div>
+      <div class="place"><div class="pname">Zimbabwe</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map">
+  <div class="wrap">
+    <div class="series-head r">
+      <h2 class="series-title">The World So Far</h2>
+      <span class="series-meta">69 Places · Mapped</span>
+    </div>
+    <p class="series-desc r">The whole list, laid onto one dark map — everywhere lived, everywhere passed through, and the two dots still waiting.</p>
+    <div class="r">
+      <div id="mapid"></div>
+      <div class="map-legend">
+        <span><i class="legend-dot lived"></i>Lived</span>
+        <span><i class="legend-dot upcoming"></i>Going Next</span>
+        <span><i class="legend-dot visited"></i>Visited</span>
+      </div>
+      <p class="map-attrib">Basemap © OpenStreetMap contributors · CARTO</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="series-head r">
+      <h2 class="series-title">About</h2>
+      <span class="series-meta">Lastman Standing</span>
+    </div>
+    <div class="about-grid">
+      <div class="r">
+        <h3 class="about-name">Lastman<br>Standing</h3>
+        <p class="about-tag">Ayakta Kalan Son Adam</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Years</div><div class="v">40</div></div>
+          <div class="stat"><div class="k">Countries</div><div class="v">~100</div></div>
+          <div class="stat"><div class="k">Home</div><div class="v">London</div></div>
+          <div class="stat"><div class="k">Languages</div><div class="v">Many</div></div>
+        </div>
+      </div>
+      <div class="about-text r">
+        <p>I'm Soner Ölmez — forty years old, six foot tall, dark hair, eyes that can't quite decide between blue and green. <strong>Turkish by birth, British by passport, Londoner by choice.</strong></p>
+        <p>I grew up between Antalya, İzmir, Foça, Çanakkale, Bodrum and Payas, in the Deli İsmail İller family line. I served as a policeman at İzmir Adnan Menderes Airport, spent five years in the North East of England, and I've lived in central London for the last ten — where I work the front desk of a hotel.</p>
+        <p>I've travelled to nearly one hundred countries and speak more than a few languages — poorly in some, fluently in others. On my days off I'm somewhere else entirely.</p>
+        <p>This is what I do, and how I live. Some places I stayed a while, some I only passed through, and a few left no photograph at all — but every one of them is on the list.</p>
+        <p class="sign">Lastman Standing — the name I was given, and the one I keep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="series-head r" style="justify-content:center">
+      <h2 class="series-title">Contact</h2>
+    </div>
+    <div class="r">
+      <a class="mail" href="mailto:hello@sonerolmez.co.uk">hello@sonerolmez.co.uk</a>
+      <p class="site">sonerolmez.co.uk</p>
+      <p class="loc">London · United Kingdom</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Lastman Standing</div>
+  <div class="fsub">Ayakta Kalan Son Adam</div>
+  <div class="copy">© 2026 Soner Ölmez</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <span class="lb-close" id="lbClose">Close ✕</span>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-meta">
+    <p class="lb-loc" id="lbLoc"></p>
+    <p class="lb-note" id="lbNote"></p>
+    <p class="lb-coords" id="lbCoords"></p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ---------- lazy reveal ---------- */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('in');
+    const img=e.target.querySelector&&e.target.querySelector('img[data-src]');
+    if(img&&img.dataset.src){img.src=img.dataset.src;img.onload=()=>img.classList.add('loaded');img.removeAttribute('data-src');}
+    io.unobserve(e.target);
+  }
+})},{threshold:.12});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),
+      lbLoc=document.getElementById('lbLoc'),lbNote=document.getElementById('lbNote'),
+      lbCoords=document.getElementById('lbCoords');
+document.querySelectorAll('.frame').forEach(f=>{
+  f.querySelector('.imgwrap').addEventListener('click',()=>{
+    const img=f.querySelector('img');
+    lbImg.src=img.src;lbImg.alt=img.alt;
+    lbLoc.textContent=f.dataset.loc||'';
+    lbNote.textContent=f.dataset.note||'';
+    lbCoords.textContent=f.dataset.coords||'';
+    lb.classList.add('open');lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+lb.addEventListener('click',closeLb);
+document.getElementById('lbClose').addEventListener('click',closeLb);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+/* ---------- map ---------- */
+const PLACES=[
+{n:'Antalya',r:'Türkiye',c:'lived',lat:36.90,lon:30.71},
+{n:'Bodrum',r:'Türkiye',c:'lived',lat:37.03,lon:27.43},
+{n:'Bucak',r:'Türkiye',c:'lived',lat:37.45,lon:30.40},
+{n:'Foça',r:'Türkiye',c:'lived',lat:38.67,lon:26.75},
+{n:'Kestel',r:'Türkiye',c:'lived',lat:40.20,lon:29.20},
+{n:'London',r:'United Kingdom',c:'lived',lat:51.51,lon:-0.13},
+{n:'North East England',r:'United Kingdom',c:'lived',lat:54.98,lon:-1.61},
+{n:'Payas',r:'Türkiye',c:'lived',lat:36.76,lon:36.43},
+{n:'Çanakkale',r:'Türkiye',c:'lived',lat:40.15,lon:26.41},
+{n:'İzmir',r:'Türkiye',c:'lived',lat:38.42,lon:27.14},
+{n:'İzmir Airport',r:'Türkiye',c:'lived',lat:38.29,lon:27.16},
+{n:'Li River',r:'China',c:'upcoming',lat:24.90,lon:110.40},
+{n:'Zhangjiajie',r:'China',c:'upcoming',lat:29.12,lon:110.48},
+{n:'Agadir',r:'Morocco',c:'visited',lat:30.42,lon:-9.60},
+{n:'Amman',r:'Jordan',c:'visited',lat:31.95,lon:35.93},
+{n:'Amsterdam',r:'Netherlands',c:'visited',lat:52.37,lon:4.90},
+{n:'Athens',r:'Greece',c:'visited',lat:37.98,lon:23.73},
+{n:'Baku',r:'Azerbaijan',c:'visited',lat:40.41,lon:49.87},
+{n:'Bali',r:'Indonesia',c:'visited',lat:-8.43,lon:115.19},
+{n:'Bangkok',r:'Thailand',c:'visited',lat:13.76,lon:100.50},
+{n:'Beijing',r:'China',c:'visited',lat:39.90,lon:116.40},
+{n:'Bogotá',r:'Colombia',c:'visited',lat:4.71,lon:-74.07},
+{n:'Botswana',r:'',c:'visited',lat:-22.30,lon:24.70},
+{n:'Budapest',r:'Hungary',c:'visited',lat:47.50,lon:19.04},
+{n:'Buenos Aires',r:'Argentina',c:'visited',lat:-34.60,lon:-58.38},
+{n:'Cairo',r:'Egypt',c:'visited',lat:30.04,lon:31.24},
+{n:'Cape Town',r:'South Africa',c:'visited',lat:-33.92,lon:18.42},
+{n:'Casablanca',r:'Morocco',c:'visited',lat:33.57,lon:-7.59},
+{n:'Christiania',r:'Denmark',c:'visited',lat:55.68,lon:12.79},
+{n:'Copenhagen',r:'Denmark',c:'visited',lat:55.68,lon:12.57},
+{n:'Córdoba',r:'Argentina',c:'visited',lat:-31.42,lon:-64.18},
+{n:'Edinburgh',r:'United Kingdom',c:'visited',lat:55.95,lon:-3.19},
+{n:'Gibraltar',r:'',c:'visited',lat:36.14,lon:-5.35},
+{n:'Ha Long Bay',r:'Vietnam',c:'visited',lat:20.91,lon:107.18},
+{n:'Havana',r:'Cuba',c:'visited',lat:23.11,lon:-82.37},
+{n:'Ho Chi Minh City',r:'Vietnam',c:'visited',lat:10.82,lon:106.63},
+{n:'Jerusalem',r:'Israel / Palestine',c:'visited',lat:31.78,lon:35.22},
+{n:'Jordan',r:'',c:'visited',lat:30.33,lon:35.44},
+{n:'Kauai',r:'United States',c:'visited',lat:22.10,lon:-159.50},
+{n:'Kenya',r:'',c:'visited',lat:-0.50,lon:37.50},
+{n:'Las Vegas',r:'United States',c:'visited',lat:36.17,lon:-115.14},
+{n:'Ljubljana',r:'Slovenia',c:'visited',lat:46.06,lon:14.51},
+{n:'Los Angeles',r:'United States',c:'visited',lat:34.05,lon:-118.24},
+{n:'Luxor',r:'Egypt',c:'visited',lat:25.70,lon:32.64},
+{n:'Makati',r:'Philippines',c:'visited',lat:14.55,lon:121.03},
+{n:'Marrakesh',r:'Morocco',c:'visited',lat:31.63,lon:-8.00},
+{n:'Medellín',r:'Colombia',c:'visited',lat:6.24,lon:-75.58},
+{n:'Mendoza',r:'Argentina',c:'visited',lat:-32.89,lon:-68.84},
+{n:'Miami',r:'United States',c:'visited',lat:25.76,lon:-80.19},
+{n:'Osaka',r:'Japan',c:'visited',lat:34.69,lon:135.50},
+{n:'Plitvice Lakes',r:'Croatia',c:'visited',lat:44.87,lon:15.62},
+{n:'Punta del Este',r:'Uruguay',c:'visited',lat:-34.97,lon:-54.95},
+{n:'Reykjavík',r:'Iceland',c:'visited',lat:64.15,lon:-21.94},
+{n:'Rio de Janeiro',r:'Brazil',c:'visited',lat:-22.91,lon:-43.17},
+{n:'San Andrés',r:'Colombia',c:'visited',lat:12.58,lon:-81.70},
+{n:'San Francisco',r:'United States',c:'visited',lat:37.77,lon:-122.42},
+{n:'Saudi Arabia',r:'',c:'visited',lat:24.00,lon:45.00},
+{n:'Seoul',r:'South Korea',c:'visited',lat:37.57,lon:126.98},
+{n:'Shenzhen',r:'China',c:'visited',lat:22.54,lon:114.06},
+{n:'Siem Reap',r:'Cambodia',c:'visited',lat:13.36,lon:103.86},
+{n:'Singapore',r:'',c:'visited',lat:1.35,lon:103.82},
+{n:'Stockholm',r:'Sweden',c:'visited',lat:59.33,lon:18.07},
+{n:'Taiwan',r:'',c:'visited',lat:23.70,lon:120.96},
+{n:'Tenerife',r:'Spain',c:'visited',lat:28.29,lon:-16.62},
+{n:'Tirana',r:'Albania',c:'visited',lat:41.33,lon:19.82},
+{n:'Vilimalé',r:'Maldives',c:'visited',lat:4.19,lon:73.51},
+{n:'Zagreb',r:'Croatia',c:'visited',lat:45.81,lon:15.98},
+{n:'Zambia',r:'',c:'visited',lat:-13.13,lon:27.85},
+{n:'Zimbabwe',r:'',c:'visited',lat:-19.00,lon:29.15}
+];
+let mapInit=false;
+const mapIo=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting&&!mapInit){
+    mapInit=true;mapIo.disconnect();
+    const map=L.map('mapid',{scrollWheelZoom:false,attributionControl:false});
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:12}).addTo(map);
+    const style={lived:{radius:6,color:'#c8b89a',fillColor:'#c8b89a',fillOpacity:1,weight:1},
+                 upcoming:{radius:7,color:'#c8b89a',fillColor:'#0b0b0c',fillOpacity:1,weight:1.5},
+                 visited:{radius:4,color:'#6b675f',fillColor:'#6b675f',fillOpacity:.9,weight:1}};
+    const catLabel={lived:'Lived',upcoming:'Going Next',visited:'Visited'};
+    PLACES.forEach(p=>{
+      const s=style[p.c];
+      L.circleMarker([p.lat,p.lon],s).bindPopup(
+        `<div class="map-popup"><div class="pp-name">${p.n}</div>`+
+        (p.r?`<div class="pp-region">${p.r}</div>`:'')+
+        `<div class="pp-cat">${catLabel[p.c]}</div></div>`
+      ).addTo(map);
+    });
+    map.fitBounds(PLACES.map(p=>[p.lat,p.lon]),{padding:[40,40],maxZoom:3});
+    map.on('click',()=>{map.scrollWheelZoom.enable()});
+    map.on('mouseout',()=>{map.scrollWheelZoom.disable()});
+  }
+})},{threshold:.2});
+mapIo.observe(document.getElementById('map'));
+/* hero countdown */
+const DEPART=new Date('2026-10-13T10:15:00Z').getTime();
+function heroTick(){
+  let d=DEPART-Date.now(); if(d<0)d=0;
+  const days=Math.floor(d/86400000);
+  const el=document.getElementById('heroCountdown');
+  if(el) el.textContent = d>0 ? ('China in '+days+' days') : 'Currently on the road';
+}
+heroTick();setInterval(heroTick,3600000);
+</script>
+</body>
+</html>
