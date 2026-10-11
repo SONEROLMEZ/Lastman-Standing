@@ -264,8 +264,8 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
         <path d="M620 210 L651 197 687 205 715 223 743 219 762 241 751 263 722 268 701 294 674 300 658 276 634 263 622 238Z"/>
       </g>
       <g stroke="#c8b89a" stroke-opacity=".15" fill="none" stroke-width="1">
-        {#each [60,120,180,240,300] as y}<path d={"M0 "+y+" H1200"}/>{/each}
-        {#each [150,300,450,600,750,900,1050] as x}<path d={"M"+x+" 0 V360"}/>{/each}
+        <path d="M0 60 H1200 M0 120 H1200 M0 180 H1200 M0 240 H1200 M0 300 H1200"/>
+        <path d="M150 0 V360 M300 0 V360 M450 0 V360 M600 0 V360 M750 0 V360 M900 0 V360 M1050 0 V360"/>
       </g>
       <path d="M235 119 C360 30 470 184 604 124 S846 55 1004 173" fill="none" stroke="#e4c989" stroke-width="3" stroke-dasharray="7 9" filter="url(#glow)"/>
       <g fill="#f1dba8" stroke="#101719" stroke-width="4"><circle cx="235" cy="119" r="8"/><circle cx="604" cy="124" r="8"/><circle cx="1004" cy="173" r="8"/></g>
