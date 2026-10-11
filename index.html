@@ -89,6 +89,17 @@ a{color:inherit;text-decoration:none}
 .journey-caption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1rem;color:var(--muted);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase}
 .journey-caption strong{color:var(--gold);font-weight:400}
 @media(max-width:640px){.journey-banner{padding:3rem 1.2rem}.journey-caption{justify-content:center;text-align:center}}
+/* ---------- featured journey panel ---------- */
+.featured-journey{padding:5rem 2rem;background:#0d1214;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.featured-journey .inner{max-width:1180px;margin:0 auto}
+.featured-journey .eyebrow{text-align:center;color:var(--gold);font-size:.58rem;letter-spacing:.34em;text-transform:uppercase}
+.featured-journey h2{text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(2rem,5vw,3.8rem);letter-spacing:.1em;text-transform:uppercase;margin:.5rem 0 2rem}
+.featured-journey .route-art{display:block;width:100%;height:auto;max-height:400px}
+.featured-journey .route-footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.featured-journey .route-footer strong{font-weight:400;color:var(--gold)}
+.featured-journey .route-note{max-width:54ch;margin:1.6rem auto 0;text-align:center;color:var(--muted);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-style:italic}
+@media(max-width:640px){.featured-journey{padding:3.5rem 1.2rem}.featured-journey .route-footer{justify-content:center;text-align:center}}
+
 /* ---------- sections ---------- */
 section{padding:7rem 2rem}
 @media(max-width:640px){section{padding:4.5rem 1.2rem}}
@@ -275,6 +286,38 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <text x="600" y="333" text-anchor="middle" fill="#8f9b96" font-family="Georgia,serif" font-size="16" font-style="italic" letter-spacing="2">A personal atlas of places, symbols and becoming</text>
     </svg>
     <div class="journey-caption"><span><strong>20</strong> totems</span><span>Europe ↔ Asia</span><span>A journey still unfolding</span></div>
+  </div>
+</section>
+
+<!-- FEATURED EUROPE–ASIA JOURNEY -->
+<section class="featured-journey" id="featured-journey">
+  <div class="inner">
+    <p class="eyebrow">The world is not a border</p>
+    <h2>Europe <span style="color:var(--gold)">↔</span> Asia</h2>
+    <svg class="route-art" viewBox="0 0 1200 370" role="img" aria-label="Stylised Europe to Asia route across a dark map">
+      <defs>
+        <linearGradient id="journeySea" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#142b32"/><stop offset="1" stop-color="#0a1115"/></linearGradient>
+        <linearGradient id="journeyLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bca77c"/><stop offset="1" stop-color="#667d70"/></linearGradient>
+      </defs>
+      <rect width="1200" height="370" fill="url(#journeySea)" rx="4"/>
+      <g fill="none" stroke="#c8b89a" stroke-opacity=".14" stroke-width="1">
+        <path d="M0 74H1200 M0 148H1200 M0 222H1200 M0 296H1200 M150 0V370 M300 0V370 M450 0V370 M600 0V370 M750 0V370 M900 0V370 M1050 0V370"/>
+      </g>
+      <g fill="url(#journeyLand)" stroke="#cbb991" stroke-opacity=".45" stroke-width="2">
+        <path d="M72 100L106 72 149 65 183 82 214 76 246 96 235 119 203 129 187 150 162 159 148 184 121 173 105 145 80 139Z"/>
+        <path d="M235 160L267 146 297 163 314 194 299 221 280 242 267 277 246 299 232 273 239 239 219 211 220 184Z"/>
+        <path d="M291 98L329 78 369 85 394 70 433 81 459 68 504 83 545 71 586 86 620 71 655 87 700 77 744 93 776 82 812 100 846 94 884 114 917 105 944 129 972 138 1000 160 1031 167 1058 192 1088 203 1110 229 1090 248 1061 237 1040 258 1009 250 990 225 961 217 947 192 915 185 897 164 864 173 840 153 813 162 784 144 749 151 725 130 691 138 669 119 636 133 604 116 577 131 547 112 517 126 490 108 460 121 430 106 405 122 379 110 352 129 326 118 307 133Z"/>
+        <path d="M401 140L429 151 442 181 432 208 415 232 397 214 390 184Z"/>
+        <path d="M620 211L651 198 687 206 715 224 743 220 762 242 751 264 722 269 701 295 674 301 658 277 634 264 622 239Z"/>
+      </g>
+      <path d="M224 119 C350 24 454 184 604 125 S842 58 1000 174" fill="none" stroke="#e7ce91" stroke-width="3" stroke-dasharray="7 9"/>
+      <g fill="#f3dda7" stroke="#101719" stroke-width="4"><circle cx="224" cy="119" r="8"/><circle cx="604" cy="125" r="8"/><circle cx="1000" cy="174" r="8"/></g>
+      <g fill="#f2e8d4" font-family="Georgia,serif" letter-spacing="5" font-size="22"><text x="118" y="44">EUROPE</text><text x="825" y="44">ASIA</text></g>
+      <g fill="#d4c29b" font-family="Arial,sans-serif" letter-spacing="3" font-size="12"><text x="224" y="151" text-anchor="middle">ROOTS</text><text x="604" y="157" text-anchor="middle">THE JOURNEY</text><text x="1000" y="205" text-anchor="middle">HORIZONS</text></g>
+      <text x="600" y="343" text-anchor="middle" fill="#9aa39d" font-family="Georgia,serif" font-size="17" font-style="italic">Twenty symbols. Countless places. One life in motion.</text>
+    </svg>
+    <div class="route-footer"><span><strong>20</strong> totems</span><span>Europe ↔ Asia</span><span>Lastman Standing · Personal atlas</span></div>
+    <p class="route-note">“The journey is the story. The places are its chapters.”</p>
   </div>
 </section>
 
