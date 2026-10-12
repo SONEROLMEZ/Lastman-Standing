@@ -112,6 +112,21 @@ a{color:inherit;text-decoration:none}
 .next-journey .closing-line{max-width:58ch;text-align:center;margin:3rem auto 0;color:var(--muted);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.25rem}
 @media(max-width:820px){.next-journey .card-grid{grid-template-columns:1fr}.next-journey .journey-card{min-height:0}}
 
+/* ---------- field notes ---------- */
+.field-notes{padding:5.5rem 2rem;background:var(--bg)}
+.field-notes .inner{max-width:1180px;margin:0 auto}
+.field-notes .notes-intro{max-width:52ch;color:var(--muted);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;line-height:1.6;margin:1.2rem 0 2.4rem}
+.field-notes .notes-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:1rem}
+.field-notes .note{position:relative;min-height:300px;overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
+.field-notes .note img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block;filter:saturate(.82);transition:transform .7s,filter .7s}
+.field-notes .note:hover img{transform:scale(1.035);filter:saturate(1)}
+.field-notes .note:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(transparent,rgba(5,7,9,.92));pointer-events:none}
+.field-notes .note-copy{position:absolute;z-index:1;left:1.25rem;right:1.25rem;bottom:1.3rem}
+.field-notes .note-copy small{color:var(--gold);font-size:.55rem;letter-spacing:.24em;text-transform:uppercase}
+.field-notes .note-copy h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.65rem;font-weight:300;margin:.45rem 0}
+.field-notes .note-copy p{color:#d1ccc2;font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;margin:0}
+@media(max-width:760px){.field-notes{padding:4rem 1.2rem}.field-notes .notes-grid{grid-template-columns:1fr}.field-notes .note,.field-notes .note img{min-height:260px}}
+
 /* ---------- sections ---------- */
 section{padding:7rem 2rem}
 @media(max-width:640px){section{padding:4.5rem 1.2rem}}
@@ -453,6 +468,31 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       </article>
     </div>
     <p class="closing-line r">“A life is measured not only by the distance travelled, but by the moments that change the traveller.”</p>
+  </div>
+</section>
+
+<!-- FIELD NOTES -->
+<section class="field-notes" id="field-notes">
+  <div class="inner">
+    <div class="series-head r">
+      <h2 class="series-title">Field Notes</h2>
+      <span class="series-meta">Places that stay with you</span>
+    </div>
+    <p class="notes-intro r">A journey is more than a pin on a map. It is the light at the edge of a day, the shape of a landscape, and the memory you carry home.</p>
+    <div class="notes-grid">
+      <a class="note r" href="#horizons">
+        <img src="images/horizon-liriver.png" alt="Misty karst mountains and the Li River at dawn" loading="lazy">
+        <div class="note-copy"><small>01 · China</small><h3>The Quiet Current</h3><p>Where the river holds the sky.</p></div>
+      </a>
+      <a class="note r" href="#horizons">
+        <img src="images/horizon-napali.png" alt="Green cliffs rising above the Pacific coastline of Na Pali" loading="lazy">
+        <div class="note-copy"><small>02 · Hawaiʻi</small><h3>Edge of the Pacific</h3><p>Green cliffs, open water, endless distance.</p></div>
+      </a>
+      <a class="note r" href="#horizons">
+        <img src="images/horizon-zhangjiajie.png" alt="Towering sandstone peaks at Zhangjiajie" loading="lazy">
+        <div class="note-copy"><small>03 · China</small><h3>Stone in the Clouds</h3><p>Ancient forms rising through mist.</p></div>
+      </a>
+    </div>
   </div>
 </section>
 
