@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Page 2 — Places | Lastman Standing</title>
-<meta name="description" content="Twenty travel destinations from Soner Ölmez's journeys.">
+<title>My Places &amp; Journeys | Lastman Standing</title>
+<meta name="description" content="Sixty places from Soner Ölmez's travels, presented in three photographic collections.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Archivo:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -10,95 +10,81 @@
 a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 2rem;background:rgba(5,16,14,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .brand{font-family:'Cormorant Garamond',serif;letter-spacing:.22em;font-size:.8rem}.back{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 main{max-width:1500px;margin:auto;padding:3rem 1.2rem 4rem}.eyebrow{text-align:center;color:var(--gold);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase}
-h1{text-align:center;font:300 clamp(2rem,5vw,4rem)/1.1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;margin:1rem 0 2.5rem}
+h1{text-align:center;font:300 clamp(2rem,5vw,4rem)/1.1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;margin:1rem 0 1.4rem}
+.intro{text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.06em;margin:0 auto 3rem;max-width:45rem;line-height:1.7}
+.group{margin:0 0 4rem;scroll-margin-top:5rem}.group-head{margin:0 0 1.4rem}.group-head .eyebrow{display:block;text-align:left}.group-head h2{font:300 clamp(1.5rem,3vw,2.2rem)/1.1 'Cormorant Garamond',serif;margin:.6rem 0;color:var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.destination{position:relative;display:block;overflow:hidden;aspect-ratio:16/9;background:#12201b}
 .destination img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,filter .6s ease;filter:saturate(.88)}
-.destination:hover img{transform:scale(1.04);filter:saturate(1.05)}
-.flag{position:absolute;bottom:8px;left:8px;display:grid;place-items:center;min-width:30px;height:25px;padding:0 5px;border-radius:2px;background:rgba(5,16,14,.78);font-size:1.1rem;box-shadow:0 1px 8px #0006}
+.destination:hover img{transform:scale(1.04);filter:saturate(1.05)}.destination:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}
+.flag{position:absolute;z-index:1;bottom:8px;left:8px;display:grid;place-items:center;min-width:30px;height:25px;padding:0 5px;border-radius:2px;background:rgba(5,16,14,.78);font-size:1.1rem;box-shadow:0 1px 8px #0006}
+.place-label{position:absolute;z-index:1;bottom:11px;right:8px;max-width:72%;font-size:.64rem;letter-spacing:.04em;text-align:right;text-shadow:0 1px 6px #000}
 footer{text-align:center;border-top:1px solid var(--line);padding:2rem;color:var(--muted);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
 @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.topbar{padding:1rem}}
-@media(max-width:560px){main{padding:2rem .6rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.flag{bottom:6px;left:6px}.brand{font-size:.65rem}}
+@media(max-width:560px){main{padding:2rem .6rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.flag{bottom:6px;left:6px}.brand{font-size:.65rem}.place-label{font-size:.58rem;bottom:8px}}
 </style></head><body>
 <header class="topbar"><a class="brand" href="index.html">SONER ÖLMEZ · LASTMAN STANDING</a><a class="back" href="index.html">← Main site</a></header>
-<main id="page2-grid"><p class="eyebrow">The personal atlas · Page 02</p><h1>Places I've Been</h1><div class="grid"><a class="destination" href="#page2-grid" aria-label="Japan">
-  <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Japan travel landscape" loading="lazy">
-  <span class="flag" aria-label="Japan flag" title="Japan">🇯🇵</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="China">
-  <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="China travel landscape" loading="lazy">
-  <span class="flag" aria-label="China flag" title="China">🇨🇳</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Thailand">
-  <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=85" alt="Thailand travel landscape" loading="lazy">
-  <span class="flag" aria-label="Thailand flag" title="Thailand">🇹🇭</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Italy">
-  <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Italy travel landscape" loading="lazy">
-  <span class="flag" aria-label="Italy flag" title="Italy">🇮🇹</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Singapore">
-  <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=85" alt="Singapore travel landscape" loading="lazy">
-  <span class="flag" aria-label="Singapore flag" title="Singapore">🇸🇬</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Malaysia">
-  <img src="https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?auto=format&fit=crop&w=900&q=85" alt="Malaysia travel landscape" loading="lazy">
-  <span class="flag" aria-label="Malaysia flag" title="Malaysia">🇲🇾</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Cambodia">
-  <img src="https://images.unsplash.com/photo-1609334761848-60a0f?auto=format&fit=crop&w=900&q=85" alt="Cambodia travel landscape" loading="lazy">
-  <span class="flag" aria-label="Cambodia flag" title="Cambodia">🇰🇭</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="India">
-  <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="India travel landscape" loading="lazy">
-  <span class="flag" aria-label="India flag" title="India">🇮🇳</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Sri Lanka">
-  <img src="https://images.unsplash.com/photo-1586613835341-4a7f7b5d3f2b?auto=format&fit=crop&w=900&q=85" alt="Sri Lanka travel landscape" loading="lazy">
-  <span class="flag" aria-label="Sri Lanka flag" title="Sri Lanka">🇱🇰</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="France">
-  <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=85" alt="France travel landscape" loading="lazy">
-  <span class="flag" aria-label="France flag" title="France">🇫🇷</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="United States">
-  <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="United States travel landscape" loading="lazy">
-  <span class="flag" aria-label="United States flag" title="United States">🇺🇸</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Sweden">
-  <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=900&q=85" alt="Sweden travel landscape" loading="lazy">
-  <span class="flag" aria-label="Sweden flag" title="Sweden">🇸🇪</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Spain">
-  <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Spain travel landscape" loading="lazy">
-  <span class="flag" aria-label="Spain flag" title="Spain">🇪🇸</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Austria">
-  <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85" alt="Austria travel landscape" loading="lazy">
-  <span class="flag" aria-label="Austria flag" title="Austria">🇦🇹</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Greece">
-  <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=85" alt="Greece travel landscape" loading="lazy">
-  <span class="flag" aria-label="Greece flag" title="Greece">🇬🇷</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Netherlands">
-  <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=900&q=85" alt="Netherlands travel landscape" loading="lazy">
-  <span class="flag" aria-label="Netherlands flag" title="Netherlands">🇳🇱</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Germany">
-  <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=85" alt="Germany travel landscape" loading="lazy">
-  <span class="flag" aria-label="Germany flag" title="Germany">🇩🇪</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Belgium">
-  <img src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=900&q=85" alt="Belgium travel landscape" loading="lazy">
-  <span class="flag" aria-label="Belgium flag" title="Belgium">🇧🇪</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Croatia">
-  <img src="https://images.unsplash.com/photo-1555990793-da11153b2473?auto=format&fit=crop&w=900&q=85" alt="Croatia travel landscape" loading="lazy">
-  <span class="flag" aria-label="Croatia flag" title="Croatia">🇭🇷</span>
-</a>
-<a class="destination" href="#page2-grid" aria-label="Vietnam">
-  <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=85" alt="Vietnam travel landscape" loading="lazy">
-  <span class="flag" aria-label="Vietnam flag" title="Vietnam">🇻🇳</span>
-</a></div></main>
-<footer>20 destinations · one image each · mini flags bottom-left</footer>
+<main id="page2-grid"><p class="eyebrow">A photographic atlas</p><h1>My Places &amp; Journeys</h1><p class="intro">Sixty places from the road — landscapes, cities and horizons, all in one continuous journey.</p>
+<section class="group" id="group-1"><div class="group-head"><span class="eyebrow">COLLECTION 01 · 20 PLACES</span><h2>Nature & Wonders</h2></div><div class="grid"><a class="destination" href="#group-1" aria-label="Livingstone, Zambia" title="Livingstone, Zambia"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Livingstone, Zambia" loading="lazy"><span class="flag" aria-label="Zambia flag" title="Zambia">🇿🇲</span><span class="place-label">Livingstone</span></a>
+<a class="destination" href="#group-1" aria-label="Victoria Falls, Zimbabwe" title="Victoria Falls, Zimbabwe"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Victoria Falls, Zimbabwe" loading="lazy"><span class="flag" aria-label="Zimbabwe flag" title="Zimbabwe">🇿🇼</span><span class="place-label">Victoria Falls</span></a>
+<a class="destination" href="#group-1" aria-label="Foz do Iguaçu, Brazil" title="Foz do Iguaçu, Brazil"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Foz do Iguaçu, Brazil" loading="lazy"><span class="flag" aria-label="Brazil flag" title="Brazil">🇧🇷</span><span class="place-label">Foz do Iguaçu</span></a>
+<a class="destination" href="#group-1" aria-label="Puerto Iguazú, Argentina" title="Puerto Iguazú, Argentina"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Puerto Iguazú, Argentina" loading="lazy"><span class="flag" aria-label="Argentina flag" title="Argentina">🇦🇷</span><span class="place-label">Puerto Iguazú</span></a>
+<a class="destination" href="#group-1" aria-label="Plitvice Lakes, Croatia" title="Plitvice Lakes, Croatia"><img src="https://images.unsplash.com/photo-1555990793-da11153b2473?auto=format&fit=crop&w=900&q=85" alt="Plitvice Lakes, Croatia" loading="lazy"><span class="flag" aria-label="Croatia flag" title="Croatia">🇭🇷</span><span class="place-label">Plitvice Lakes</span></a>
+<a class="destination" href="#group-1" aria-label="Ha Long Bay, Vietnam" title="Ha Long Bay, Vietnam"><img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=85" alt="Ha Long Bay, Vietnam" loading="lazy"><span class="flag" aria-label="Vietnam flag" title="Vietnam">🇻🇳</span><span class="place-label">Ha Long Bay</span></a>
+<a class="destination" href="#group-1" aria-label="Sigiriya, Sri Lanka" title="Sigiriya, Sri Lanka"><img src="https://images.unsplash.com/photo-1586613835341-4a7f7b5d3f2b?auto=format&fit=crop&w=900&q=85" alt="Sigiriya, Sri Lanka" loading="lazy"><span class="flag" aria-label="Sri Lanka flag" title="Sri Lanka">🇱🇰</span><span class="place-label">Sigiriya</span></a>
+<a class="destination" href="#group-1" aria-label="Bled, Slovenia" title="Bled, Slovenia"><img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85" alt="Bled, Slovenia" loading="lazy"><span class="flag" aria-label="Slovenia flag" title="Slovenia">🇸🇮</span><span class="place-label">Bled</span></a>
+<a class="destination" href="#group-1" aria-label="Kranjska Gora, Slovenia" title="Kranjska Gora, Slovenia"><img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85" alt="Kranjska Gora, Slovenia" loading="lazy"><span class="flag" aria-label="Slovenia flag" title="Slovenia">🇸🇮</span><span class="place-label">Kranjska Gora</span></a>
+<a class="destination" href="#group-1" aria-label="Kauai, United States" title="Kauai, United States"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Kauai, United States" loading="lazy"><span class="flag" aria-label="United States flag" title="United States">🇺🇸</span><span class="place-label">Kauai</span></a>
+<a class="destination" href="#group-1" aria-label="Waikiki Beach, United States" title="Waikiki Beach, United States"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Waikiki Beach, United States" loading="lazy"><span class="flag" aria-label="United States flag" title="United States">🇺🇸</span><span class="place-label">Waikiki Beach</span></a>
+<a class="destination" href="#group-1" aria-label="Tenerife, Spain" title="Tenerife, Spain"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Tenerife, Spain" loading="lazy"><span class="flag" aria-label="Spain flag" title="Spain">🇪🇸</span><span class="place-label">Tenerife</span></a>
+<a class="destination" href="#group-1" aria-label="Maldives, Maldives" title="Maldives, Maldives"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Maldives, Maldives" loading="lazy"><span class="flag" aria-label="Maldives flag" title="Maldives">🇲🇻</span><span class="place-label">Maldives</span></a>
+<a class="destination" href="#group-1" aria-label="Bali, Indonesia" title="Bali, Indonesia"><img src="https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?auto=format&fit=crop&w=900&q=85" alt="Bali, Indonesia" loading="lazy"><span class="flag" aria-label="Indonesia flag" title="Indonesia">🇮🇩</span><span class="place-label">Bali</span></a>
+<a class="destination" href="#group-1" aria-label="Kasane, Botswana" title="Kasane, Botswana"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Kasane, Botswana" loading="lazy"><span class="flag" aria-label="Botswana flag" title="Botswana">🇧🇼</span><span class="place-label">Kasane</span></a>
+<a class="destination" href="#group-1" aria-label="Impalila, Namibia" title="Impalila, Namibia"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Impalila, Namibia" loading="lazy"><span class="flag" aria-label="Namibia flag" title="Namibia">🇳🇦</span><span class="place-label">Impalila</span></a>
+<a class="destination" href="#group-1" aria-label="Como, Italy" title="Como, Italy"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Como, Italy" loading="lazy"><span class="flag" aria-label="Italy flag" title="Italy">🇮🇹</span><span class="place-label">Como</span></a>
+<a class="destination" href="#group-1" aria-label="Li River, China" title="Li River, China"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Li River, China" loading="lazy"><span class="flag" aria-label="China flag" title="China">🇨🇳</span><span class="place-label">Li River</span></a>
+<a class="destination" href="#group-1" aria-label="Zhangjiajie, China" title="Zhangjiajie, China"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Zhangjiajie, China" loading="lazy"><span class="flag" aria-label="China flag" title="China">🇨🇳</span><span class="place-label">Zhangjiajie</span></a>
+<a class="destination" href="#group-1" aria-label="Reykjavík, Iceland" title="Reykjavík, Iceland"><img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=900&q=85" alt="Reykjavík, Iceland" loading="lazy"><span class="flag" aria-label="Iceland flag" title="Iceland">🇮🇸</span><span class="place-label">Reykjavík</span></a>
+</div></section><section class="group" id="group-2"><div class="group-head"><span class="eyebrow">COLLECTION 02 · 20 PLACES</span><h2>Cities & Cultures</h2></div><div class="grid"><a class="destination" href="#group-2" aria-label="Amsterdam, Netherlands" title="Amsterdam, Netherlands"><img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=900&q=85" alt="Amsterdam, Netherlands" loading="lazy"><span class="flag" aria-label="Netherlands flag" title="Netherlands">🇳🇱</span><span class="place-label">Amsterdam</span></a>
+<a class="destination" href="#group-2" aria-label="Antwerp, Belgium" title="Antwerp, Belgium"><img src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=900&q=85" alt="Antwerp, Belgium" loading="lazy"><span class="flag" aria-label="Belgium flag" title="Belgium">🇧🇪</span><span class="place-label">Antwerp</span></a>
+<a class="destination" href="#group-2" aria-label="Athens, Greece" title="Athens, Greece"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=85" alt="Athens, Greece" loading="lazy"><span class="flag" aria-label="Greece flag" title="Greece">🇬🇷</span><span class="place-label">Athens</span></a>
+<a class="destination" href="#group-2" aria-label="Baku, Azerbaijan" title="Baku, Azerbaijan"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Baku, Azerbaijan" loading="lazy"><span class="flag" aria-label="Azerbaijan flag" title="Azerbaijan">🇦🇿</span><span class="place-label">Baku</span></a>
+<a class="destination" href="#group-2" aria-label="Bangkok, Thailand" title="Bangkok, Thailand"><img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=85" alt="Bangkok, Thailand" loading="lazy"><span class="flag" aria-label="Thailand flag" title="Thailand">🇹🇭</span><span class="place-label">Bangkok</span></a>
+<a class="destination" href="#group-2" aria-label="Beijing, China" title="Beijing, China"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Beijing, China" loading="lazy"><span class="flag" aria-label="China flag" title="China">🇨🇳</span><span class="place-label">Beijing</span></a>
+<a class="destination" href="#group-2" aria-label="Berlin, Germany" title="Berlin, Germany"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=85" alt="Berlin, Germany" loading="lazy"><span class="flag" aria-label="Germany flag" title="Germany">🇩🇪</span><span class="place-label">Berlin</span></a>
+<a class="destination" href="#group-2" aria-label="Bogotá, Colombia" title="Bogotá, Colombia"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Bogotá, Colombia" loading="lazy"><span class="flag" aria-label="Colombia flag" title="Colombia">🇨🇴</span><span class="place-label">Bogotá</span></a>
+<a class="destination" href="#group-2" aria-label="Brussels, Belgium" title="Brussels, Belgium"><img src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=900&q=85" alt="Brussels, Belgium" loading="lazy"><span class="flag" aria-label="Belgium flag" title="Belgium">🇧🇪</span><span class="place-label">Brussels</span></a>
+<a class="destination" href="#group-2" aria-label="Budapest, Hungary" title="Budapest, Hungary"><img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85" alt="Budapest, Hungary" loading="lazy"><span class="flag" aria-label="Hungary flag" title="Hungary">🇭🇺</span><span class="place-label">Budapest</span></a>
+<a class="destination" href="#group-2" aria-label="Buenos Aires, Argentina" title="Buenos Aires, Argentina"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Buenos Aires, Argentina" loading="lazy"><span class="flag" aria-label="Argentina flag" title="Argentina">🇦🇷</span><span class="place-label">Buenos Aires</span></a>
+<a class="destination" href="#group-2" aria-label="Cairo, Egypt" title="Cairo, Egypt"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Cairo, Egypt" loading="lazy"><span class="flag" aria-label="Egypt flag" title="Egypt">🇪🇬</span><span class="place-label">Cairo</span></a>
+<a class="destination" href="#group-2" aria-label="Cape Town, South Africa" title="Cape Town, South Africa"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Cape Town, South Africa" loading="lazy"><span class="flag" aria-label="South Africa flag" title="South Africa">🇿🇦</span><span class="place-label">Cape Town</span></a>
+<a class="destination" href="#group-2" aria-label="Changsha, China" title="Changsha, China"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Changsha, China" loading="lazy"><span class="flag" aria-label="China flag" title="China">🇨🇳</span><span class="place-label">Changsha</span></a>
+<a class="destination" href="#group-2" aria-label="Copenhagen, Denmark" title="Copenhagen, Denmark"><img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=900&q=85" alt="Copenhagen, Denmark" loading="lazy"><span class="flag" aria-label="Denmark flag" title="Denmark">🇩🇰</span><span class="place-label">Copenhagen</span></a>
+<a class="destination" href="#group-2" aria-label="Dubai, United Arab Emirates" title="Dubai, United Arab Emirates"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Dubai, United Arab Emirates" loading="lazy"><span class="flag" aria-label="United Arab Emirates flag" title="United Arab Emirates">🇦🇪</span><span class="place-label">Dubai</span></a>
+<a class="destination" href="#group-2" aria-label="Havana, Cuba" title="Havana, Cuba"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Havana, Cuba" loading="lazy"><span class="flag" aria-label="Cuba flag" title="Cuba">🇨🇺</span><span class="place-label">Havana</span></a>
+<a class="destination" href="#group-2" aria-label="Jerusalem, Palestine" title="Jerusalem, Palestine"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Jerusalem, Palestine" loading="lazy"><span class="flag" aria-label="Palestine flag" title="Palestine">🇵🇸</span><span class="place-label">Jerusalem</span></a>
+<a class="destination" href="#group-2" aria-label="Johannesburg, South Africa" title="Johannesburg, South Africa"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Johannesburg, South Africa" loading="lazy"><span class="flag" aria-label="South Africa flag" title="South Africa">🇿🇦</span><span class="place-label">Johannesburg</span></a>
+<a class="destination" href="#group-2" aria-label="Karlovac, Croatia" title="Karlovac, Croatia"><img src="https://images.unsplash.com/photo-1555990793-da11153b2473?auto=format&fit=crop&w=900&q=85" alt="Karlovac, Croatia" loading="lazy"><span class="flag" aria-label="Croatia flag" title="Croatia">🇭🇷</span><span class="place-label">Karlovac</span></a>
+</div></section><section class="group" id="group-3"><div class="group-head"><span class="eyebrow">COLLECTION 03 · 20 PLACES</span><h2>Journeys & Horizons</h2></div><div class="grid"><a class="destination" href="#group-3" aria-label="Colombo, Sri Lanka" title="Colombo, Sri Lanka"><img src="https://images.unsplash.com/photo-1586613835341-4a7f7b5d3f2b?auto=format&fit=crop&w=900&q=85" alt="Colombo, Sri Lanka" loading="lazy"><span class="flag" aria-label="Sri Lanka flag" title="Sri Lanka">🇱🇰</span><span class="place-label">Colombo</span></a>
+<a class="destination" href="#group-3" aria-label="Doha, Qatar" title="Doha, Qatar"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Doha, Qatar" loading="lazy"><span class="flag" aria-label="Qatar flag" title="Qatar">🇶🇦</span><span class="place-label">Doha</span></a>
+<a class="destination" href="#group-3" aria-label="Málaga, Spain" title="Málaga, Spain"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Málaga, Spain" loading="lazy"><span class="flag" aria-label="Spain flag" title="Spain">🇪🇸</span><span class="place-label">Málaga</span></a>
+<a class="destination" href="#group-3" aria-label="Faro, Portugal" title="Faro, Portugal"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Faro, Portugal" loading="lazy"><span class="flag" aria-label="Portugal flag" title="Portugal">🇵🇹</span><span class="place-label">Faro</span></a>
+<a class="destination" href="#group-3" aria-label="Gibraltar, Gibraltar" title="Gibraltar, Gibraltar"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Gibraltar, Gibraltar" loading="lazy"><span class="flag" aria-label="Gibraltar flag" title="Gibraltar">🇬🇮</span><span class="place-label">Gibraltar</span></a>
+<a class="destination" href="#group-3" aria-label="Ho Chi Minh City, Vietnam" title="Ho Chi Minh City, Vietnam"><img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=85" alt="Ho Chi Minh City, Vietnam" loading="lazy"><span class="flag" aria-label="Vietnam flag" title="Vietnam">🇻🇳</span><span class="place-label">Ho Chi Minh City</span></a>
+<a class="destination" href="#group-3" aria-label="Honolulu, United States" title="Honolulu, United States"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Honolulu, United States" loading="lazy"><span class="flag" aria-label="United States flag" title="United States">🇺🇸</span><span class="place-label">Honolulu</span></a>
+<a class="destination" href="#group-3" aria-label="Jeddah, Saudi Arabia" title="Jeddah, Saudi Arabia"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Jeddah, Saudi Arabia" loading="lazy"><span class="flag" aria-label="Saudi Arabia flag" title="Saudi Arabia">🇸🇦</span><span class="place-label">Jeddah</span></a>
+<a class="destination" href="#group-3" aria-label="Las Vegas, United States" title="Las Vegas, United States"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Las Vegas, United States" loading="lazy"><span class="flag" aria-label="United States flag" title="United States">🇺🇸</span><span class="place-label">Las Vegas</span></a>
+<a class="destination" href="#group-3" aria-label="Lima, Peru" title="Lima, Peru"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Lima, Peru" loading="lazy"><span class="flag" aria-label="Peru flag" title="Peru">🇵🇪</span><span class="place-label">Lima</span></a>
+<a class="destination" href="#group-3" aria-label="Ljubljana, Slovenia" title="Ljubljana, Slovenia"><img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85" alt="Ljubljana, Slovenia" loading="lazy"><span class="flag" aria-label="Slovenia flag" title="Slovenia">🇸🇮</span><span class="place-label">Ljubljana</span></a>
+<a class="destination" href="#group-3" aria-label="Luxor, Egypt" title="Luxor, Egypt"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Luxor, Egypt" loading="lazy"><span class="flag" aria-label="Egypt flag" title="Egypt">🇪🇬</span><span class="place-label">Luxor</span></a>
+<a class="destination" href="#group-3" aria-label="Marrakesh, Morocco" title="Marrakesh, Morocco"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=85" alt="Marrakesh, Morocco" loading="lazy"><span class="flag" aria-label="Morocco flag" title="Morocco">🇲🇦</span><span class="place-label">Marrakesh</span></a>
+<a class="destination" href="#group-3" aria-label="Mecca, Saudi Arabia" title="Mecca, Saudi Arabia"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Mecca, Saudi Arabia" loading="lazy"><span class="flag" aria-label="Saudi Arabia flag" title="Saudi Arabia">🇸🇦</span><span class="place-label">Mecca</span></a>
+<a class="destination" href="#group-3" aria-label="Medellín, Colombia" title="Medellín, Colombia"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=85" alt="Medellín, Colombia" loading="lazy"><span class="flag" aria-label="Colombia flag" title="Colombia">🇨🇴</span><span class="place-label">Medellín</span></a>
+<a class="destination" href="#group-3" aria-label="Mumbai, India" title="Mumbai, India"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=85" alt="Mumbai, India" loading="lazy"><span class="flag" aria-label="India flag" title="India">🇮🇳</span><span class="place-label">Mumbai</span></a>
+<a class="destination" href="#group-3" aria-label="Osaka, Japan" title="Osaka, Japan"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Osaka, Japan" loading="lazy"><span class="flag" aria-label="Japan flag" title="Japan">🇯🇵</span><span class="place-label">Osaka</span></a>
+<a class="destination" href="#group-3" aria-label="Paris, France" title="Paris, France"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=85" alt="Paris, France" loading="lazy"><span class="flag" aria-label="France flag" title="France">🇫🇷</span><span class="place-label">Paris</span></a>
+<a class="destination" href="#group-3" aria-label="Rio de Janeiro, Brazil" title="Rio de Janeiro, Brazil"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Rio de Janeiro, Brazil" loading="lazy"><span class="flag" aria-label="Brazil flag" title="Brazil">🇧🇷</span><span class="place-label">Rio de Janeiro</span></a>
+<a class="destination" href="#group-3" aria-label="Singapore, Singapore" title="Singapore, Singapore"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=85" alt="Singapore, Singapore" loading="lazy"><span class="flag" aria-label="Singapore flag" title="Singapore">🇸🇬</span><span class="place-label">Singapore</span></a>
+</div></section>
+</main>
+<footer>60 places · three collections · one journey</footer>
 </body></html>
