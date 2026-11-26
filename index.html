@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Archivo:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -80,6 +81,13 @@ a{color:inherit;text-decoration:none}
   position:absolute;bottom:2rem;font-size:.55rem;letter-spacing:.4em;
   color:var(--faint);text-transform:uppercase;
 }
+  .hero-ayah{position:absolute;right:7%;top:50%;width:34%;text-align:center;direction:rtl;font-family:'Amiri',serif;color:var(--gold);text-shadow:0 2px 14px rgba(0,0,0,.9);z-index:2;line-height:1.9}
+  .hero-ayah .besmele{font-size:1.15rem;opacity:.85;margin:0 0 .4rem}
+  .hero-ayah .ayah1{font-size:1.9rem;margin:0}
+  @media(max-width:640px){.hero-ayah{right:3%;top:6.5rem;width:52%}.hero-ayah .besmele{font-size:.85rem}.hero-ayah .ayah1{font-size:1.15rem}}
+  #alak{padding:4.5rem 1.5rem 3.5rem;text-align:center;direction:rtl;font-family:'Amiri',serif;color:var(--gold)}
+  #alak p{font-size:1.7rem;line-height:2.3;margin:0}
+  @media(max-width:640px){#alak p{font-size:1.25rem}}
 
 /* ---------- sections ---------- */
 section{padding:7rem 2rem}
@@ -205,6 +213,15 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
 /* reveal on scroll */
 .r{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
 .r.in{opacity:1;transform:none}
+@media(max-width:640px){
+  .topbar{backdrop-filter:none;-webkit-backdrop-filter:none;flex-direction:column;align-items:center;gap:.4rem;padding:.6rem .6rem .9rem;background:linear-gradient(to bottom,rgba(11,11,12,.85),rgba(11,11,12,0))}
+  .topbar .brand{font-size:.5rem;letter-spacing:.2em}
+  .topbar nav{flex-wrap:nowrap;justify-content:center;align-items:center;gap:.55rem;max-width:100%;overflow-x:auto;white-space:nowrap}
+  .topbar nav a{font-size:.46rem;letter-spacing:.1em}
+  .topbar nav .navicons{gap:.6rem;margin-left:.2rem}
+  .topbar nav .navicons a{font-size:.75rem}
+  .hero-ayah{top:5.5rem}
+}
 </style>
 </head>
 <body>
@@ -225,10 +242,12 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
 <!-- HERO -->
 <section class="hero" id="top">
   <h1 class="name" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Soner Ölmez</h1>
+  <div class="hero-ayah" lang="ar"><p class="besmele">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</p><p class="ayah1">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p></div>
   <p class="sub" id="heroCountdown" style="position:absolute;left:0;right:0;bottom:4.2rem;margin:0;color:var(--gold);letter-spacing:.3em;text-shadow:0 2px 12px rgba(0,0,0,.95)"></p>
   <div class="rule"></div>
   <p class="scroll">Scroll</p>
 </section>
+  <section id="alak" lang="ar"><p>اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ﴿١﴾<br>خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ ﴿٢﴾<br>اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ﴿٣﴾<br>الَّذِي عَلَّمَ بِالْقَلَمِ ﴿٤﴾<br>عَلَّمَ الْإِنْسَانَ مَا لَمْ يَعْلَمْ ﴿٥﴾</p></section>
 
 <!-- TOTEMS -->
 <section id="totems">
