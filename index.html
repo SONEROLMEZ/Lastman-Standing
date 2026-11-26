@@ -725,7 +725,7 @@ const mapIo=new IntersectionObserver(es=>{es.forEach(e=>{
   if(!mapInit){
     mapInit=true;mapIo.disconnect();
     const map=L.map('mapid',{scrollWheelZoom:false,attributionControl:false});
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:12}).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:12}).addTo(map);
     const style={lived:{radius:6,color:'#c8b89a',fillColor:'#c8b89a',fillOpacity:1,weight:1},
                  upcoming:{radius:7,color:'#c8b89a',fillColor:'#0b0b0c',fillOpacity:1,weight:1.5},
                  visited:{radius:4,color:'#6b675f',fillColor:'#6b675f',fillOpacity:.9,weight:1}};
