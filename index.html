@@ -222,13 +222,13 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
   <h1 class="name" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Soner Ölmez</h1>
   <p class="sub" id="heroCountdown" style="position:absolute;left:0;right:0;bottom:4.2rem;margin:0;color:var(--gold);letter-spacing:.3em;text-shadow:0 2px 12px rgba(0,0,0,.95)"></p>
   <div class="rule"></div>
+  <p class="sub" style="position:absolute;left:0;right:0;bottom:6.5rem;margin:0"><a href="mailto:mr.sonerolmez@gmail.com">Email</a> · <a href="https://www.instagram.com/sonyolmez" target="_blank">Instagram</a> · <a href="https://www.facebook.com/sonerolmezz" target="_blank">Facebook</a> · <a href="https://wa.me/447852224002" target="_blank">WhatsApp</a></p>
   <p class="scroll">Scroll</p>
 </section>
 
 <!-- TOTEMS -->
 <section id="totems">
   <div class="wrap">
-    <div class="series-head r">
       <div class="totem-grid">
       <figure class="frame totem r" data-title="Under the Pillar" data-loc="Zhangjiajie, China · 2024" data-note="Stood at the bottom and looked straight up." data-coords="29.1170 N, 110.4790 E">
         <div class="imgwrap"><img data-src="images/totem-zhangjiajie.png" alt="Zhangjiajie — Under the Pillar"></div>
@@ -269,7 +269,6 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
 <!-- HORIZONS -->
 <section id="horizons">
   <div class="wrap">
-  </div>
     <p class="series-desc r">Endless ground, level horizon, the world opened flat.</p>
     <div class="horizon-list">
       <figure class="frame horizon r" data-title="Green Water" data-loc="Li River, China · 2026" data-note="Karst towers, still water, nobody else on the river." data-coords="24.9000 N, 110.4000 E">
@@ -473,6 +472,20 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
       <img src="destinations_81_100_4k_upscaled.png" alt="Places part 11" loading="lazy" style="width:100%;display:block;margin-bottom:14px">
       <img src="destinations_100_120_4k_upscaled.png" alt="Places part 12" loading="lazy" style="width:100%;display:block;margin-bottom:14px">
     </div>
+  </div>
+</section>
+
+  <!-- MAP -->
+  <section id="map">
+    <div class="wrap">
+      <div id="mapid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
     <div class="r">
         <h3 class="about-name">Lastman<br>Standing</h3>
         <p class="about-tag">Ayakta Kalan Son Adam</p>
@@ -494,6 +507,8 @@ Every one will be dieying but names are the one immortal (insan bir gun gider am
     </div>
   </div>
 </section>
+  <section class="contact" id="contact">
+    <div class="wrap">
 <div class="r">
       <a class="mail" href="mailto:mr.sonerolmez@gmail.com">mr.sonerolmez@gmail.com</a>
       <div class="socials">
@@ -534,7 +549,7 @@ const io=new IntersectionObserver(es=>{es.forEach(e=>{
     if(img&&img.dataset.src){img.src=img.dataset.src;img.onload=()=>img.classList.add('loaded');img.removeAttribute('data-src');}
     io.unobserve(e.target);
   }
-})},{threshold:.12});
+})},{threshold:0});
 document.querySelectorAll('.r').forEach(el=>io.observe(el));
 
 /* ---------- lightbox ---------- */
