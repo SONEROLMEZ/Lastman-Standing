@@ -722,7 +722,7 @@ const PLACES=[
 ];
 let mapInit=false;
 const mapIo=new IntersectionObserver(es=>{es.forEach(e=>{
-  if(e.isIntersecting&&!mapInit){
+  if(!mapInit){
     mapInit=true;mapIo.disconnect();
     const map=L.map('mapid',{scrollWheelZoom:false,attributionControl:false});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:12}).addTo(map);
