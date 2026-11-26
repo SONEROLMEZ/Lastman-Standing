@@ -261,5 +261,12 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 </script>
+<script>
+document.querySelectorAll('img[data-src]').forEach(function(img){
+  img.addEventListener('load',function(){img.classList.add('loaded');});
+  img.src=img.getAttribute('data-src');
+  if(img.complete&&img.naturalWidth){img.classList.add('loaded');}
+});
+</script>
 </body>
 </html>
