@@ -353,8 +353,8 @@ footer .copy{font-size:.55rem;letter-spacing:.25em;color:var(--faint);margin-top
 
     <div class="cat-head next r"><span class="dot"></span><h3>Going Next</h3><span class="count">2</span><span class="tag">Booked, and counting the days.</span></div>
     <div class="place-list r">
-      <div class="place"><div class="pname">Buenos Aires</div><div class="pregion">Argentina</div><div class="pnote">In two months.</div></div>
-      <div class="place"><div class="pname">Antalya</div><div class="pregion">Turkey</div><div class="pnote">In two weeks.</div></div>
+      <div class="place"><div class="pname">Las Vegas</div><div class="pregion">United States</div><div class="pnote">Next destination.</div></div>
+      <div class="place"><div class="pname">Round the World</div><div class="pregion">Eid al-Fitr to Easter 2027</div><div class="pnote">Toronto for Niagara Falls, then Las Vegas, Los Angeles, Kauai, Nadi, and on to Sydney, Melbourne and the Gold Coast. The journey is taking shape, details to follow, inshallah.</div></div>
     </div>
 
     <div class="cat-head visited r"><span class="dot"></span><h3>Visited</h3><span class="count">127</span><span class="tag">Stayed a while, or passed straight through.</span></div>
@@ -760,12 +760,12 @@ const mapIo=new IntersectionObserver(es=>{es.forEach(e=>{
 })},{threshold:.2});
 mapIo.observe(document.getElementById('map'));
 /* hero countdown */
-const DEPART=new Date('2026-10-13T10:15:00Z').getTime();
+const DEPART=new Date('2027-03-10T00:00:00Z').getTime();
 function heroTick(){
   let d=DEPART-Date.now(); if(d<0)d=0;
   const days=Math.floor(d/86400000);
   const el=document.getElementById('heroCountdown');
-  if(el) el.textContent = d>0 ? ('Antalya in '+days+' days · China on the 18th') : 'Currently on the road';
+  if(el) el.textContent = d>0 ? ('Round the World in '+days+' days') : 'Currently on the road';
 }
 heroTick();setInterval(heroTick,3600000);
 </script>
